@@ -1,0 +1,71 @@
+---
+import { SITE_DESCRIPTION, SITE_TITLE } from "../config";
+import Page from "../layouts/Page.astro";
+
+// Use Astro.glob() to fetch all posts, and then sort them by date.
+const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
+  (a, b) =>
+    new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
+);
+---
+
+<Page title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <section>
+    <h1>About</h1>
+    <div class="photo">
+      <img alt="Seth Livingston" src="seth-mandy-top-golf-bw.jpg" />
+    </div>
+    <p class="text-center">
+      Frontend coder @ <a href="https://moov.io">Moov Financial</a><br />
+      Husband and dad in Texas, US<br /><br />
+      I write about software development and monetary policy<br />
+    </p>
+  </section>
+
+  <section class="posts">
+    <h1>Posts</h1>
+    {
+      posts.map((post) => (
+        <p>
+          <a href={post.url}>{post.frontmatter.title}</a>
+          <time datetime={post.frontmatter.pubDate}>
+            {new Date(post.frontmatter.pubDate).toLocaleDateString("en-us", {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            })}
+          </time>
+        </p>
+      ))
+    }
+  </section>
+</Page>
+
+<style>
+  section {
+    margin-left: 7vw;
+    margin-right: 7vw;
+  }
+  section h1 {
+    font-size: 1.25rem;
+    text-align: center;
+  }
+  section time {
+    font-size: 0.7rem;
+  }
+  section.posts p {
+    margin-bottom: 0.5rem;
+  }
+
+  .photo {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .photo img {
+    border: 1px solid black;
+    border-radius: 100%;
+    box-shadow: 0 0 16px 2px black;
+    height: 100px;
+    width: 100px;
+  }
+</style>

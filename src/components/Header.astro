@@ -1,0 +1,31 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+import { SITE_TITLE } from "../config";
+---
+
+<header>{SITE_TITLE}</header>
+
+<nav>
+  <ul>
+    <li><HeaderLink href="/">Home</HeaderLink></li>
+  </ul>
+  <ul>
+    <li>
+      <a href="https://github.com/sethlivingston"
+        ><i class="fa-brands fa-github" title="GitHub"></i>
+      </a>
+    </li>
+    <li>
+      <a href="https://twitter.com/sethltx"
+        ><i class="fa-brands fa-twitter" title="Twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a href="https://www.linkedin.com/in/sethlivingston/"
+        ><i class="fa-brands fa-linkedin" title="LinkedIn"></i>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<hr />
