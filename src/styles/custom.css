@@ -1,21 +1,33 @@
 :root {
-  --color-primary: #feff00;
-  --color-background: #171717;
-  --color-text-loud: white;
-  --color-text-normal: #c3c3c3;
-  --color-text-quiet: #888;
+  --color-primary: #2b4162;
+  --color-background: #f8f8f8;
+  --color-text-loud: black;
+  --color-text-normal: #222;
+  --color-text-quiet: #777;
+  --color-border: #eee;
+  --font-title: "Libre Baskerville", sans-serif;
+  --font-body: "Georgia", sans-serif;
+  --font-meta: "Nanum Gothic", sans-serif;
+  --font-mono: "Nanum Gothic Coding", monospace;
 }
 
 html {
   background-color: var(--color-background);
   color: var(--color-text-normal);
-  font-family: Barlow, sans-serif;
+  font-family: var(--font-body);
   font-size: calc(16px * 0.25vw);
-  font-weight: 300;
+  height: 100%;
 }
 
 body {
-  min-height: 100vh;
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+footer {
+  grid-row-start: 2;
+  grid-row-end: 3;
 }
 
 footer,
@@ -29,12 +41,16 @@ nav {
 
 header {
   color: var(--color-text-loud);
+  font-family: var(--font-title);
   font-size: 1.5rem;
   margin-bottom: 0.25rem;
 }
 
 nav {
   display: flex;
+  font-family: var(--font-meta);
+  font-size: 0.9rem;
+  text-transform: uppercase;
   justify-content: space-between;
   margin-top: 0;
 }
@@ -54,14 +70,24 @@ nav ul:first-child li {
 nav ul:last-child li {
   padding-left: 0.5rem;
 }
+nav ul a:link,
+nav ul a:visited {
+  border-bottom: none;
+}
+nav ul.icons a:hover,
+nav ul.icons a:active {
+  color: var(--color-primary);
+  background-color: inherit;
+}
 
 hr {
   height: 1px;
-  background-color: #222;
+  background-color: var(--color-border);
 }
 
 footer {
   color: var(--color-text-quiet);
+  font-family: var(--font-meta);
   font-size: 0.75rem;
   margin-top: 3rem;
   text-align: center;
@@ -72,6 +98,8 @@ h2,
 h3,
 h4 {
   color: var(--color-text-loud);
+  font-family: var(--font-title);
+  letter-spacing: -0.04rem;
 }
 
 a {
@@ -79,6 +107,7 @@ a {
 }
 a:link,
 a:visited {
+  border-bottom: 1px solid var(--color-primary);
   color: var(--color-primary);
 }
 a:hover,
@@ -91,4 +120,58 @@ a:active {
 
 .text-center {
   text-align: center;
+}
+
+section.narrow {
+  margin-left: 7vw;
+  margin-right: 7vw;
+}
+section h1 {
+  font-size: 1.25rem;
+  text-align: center;
+}
+section.posts p {
+  margin-bottom: 0.5rem;
+}
+section.posts time {
+  font-family: var(--font-meta);
+  font-size: 0.7rem;
+}
+
+article .byline {
+  color: var(--color-text-quiet);
+  font-family: var(--font-meta);
+  font-size: 0.85rem;
+  margin-bottom: 2rem;
+}
+article author {
+  display: block;
+}
+article blockquote {
+  color: var(--color-primary);
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+pre.astro-code {
+  background-color: var(--color-background) !important;
+}
+pre > code {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+/* From https://github.com/shikijs/shiki/issues/3 */
+code {
+  counter-reset: step;
+  counter-increment: step 0;
+}
+code .line::before {
+  content: counter(step);
+  counter-increment: step;
+  width: 1rem;
+  margin-right: 1.5rem;
+  display: inline-block;
+  text-align: right;
+  color: rgba(115, 138, 148, 0.4);
 }

@@ -1,0 +1,30 @@
+---
+import { SITE_DESCRIPTION, SITE_TITLE } from "../config";
+import Page from "../layouts/Page.astro";
+
+// Use Astro.glob() to fetch all posts, and then sort them by date.
+const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
+  (a, b) =>
+    new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
+);
+---
+
+<Page title={`Blog | ${SITE_TITLE}`} description="Notes from my personal laboratory">
+  <section class="posts">
+    <h1>Posts</h1>
+    {
+      posts.map((post) => (
+        <p>
+          <a href={post.url}>{post.frontmatter.title}</a>
+          <time datetime={post.frontmatter.pubDate}>
+            {new Date(post.frontmatter.pubDate).toLocaleDateString("en-us", {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            })}
+          </time>
+        </p>
+      ))
+    }
+  </section>
+</Page>

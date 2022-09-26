@@ -1,0 +1,36 @@
+---
+import Page from "./Page.astro";
+
+export interface Props {
+  content: {
+    title: string;
+    description: string;
+    pubDate: string;
+    originalPubDate?: string;
+    heroImage?: string;
+    tags?: string[];
+  };
+}
+
+const {
+  content: { title, description, pubDate, originalPubDate, heroImage },
+} = Astro.props;
+
+let date: string;
+if (originalPubDate) {
+  date = `${originalPubDate}, last updated ${pubDate}`;
+} else {
+  date = pubDate;
+}
+---
+
+<Page title={title} description={description} image={heroImage}>
+  <article>
+    <h1>{title}</h1>
+    <div class="byline">
+      <author>Seth Livingston</author>
+      <time>{date}</time>
+    </div>
+    <slot />
+  </article>
+</Page>

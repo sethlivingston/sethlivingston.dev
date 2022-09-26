@@ -10,7 +10,7 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
 ---
 
 <Page title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <section>
+  <section class="narrow">
     <h1>About</h1>
     <div class="photo">
       <img alt="Seth Livingston" src="seth-mandy-top-golf-bw.jpg" />
@@ -22,10 +22,10 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
     </p>
   </section>
 
-  <section class="posts">
-    <h1>Posts</h1>
+  <section class="posts narrow">
+    <h1>Recent Posts</h1>
     {
-      posts.map((post) => (
+      posts.slice(0, 10).map((post) => (
         <p>
           <a href={post.url}>{post.frontmatter.title}</a>
           <time datetime={post.frontmatter.pubDate}>
@@ -38,25 +38,17 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
         </p>
       ))
     }
+    {
+      posts.length > 10 && (
+        <p>
+          <a href="/blog">See more posts...</a>
+        </p>
+      )
+    }
   </section>
 </Page>
 
 <style>
-  section {
-    margin-left: 7vw;
-    margin-right: 7vw;
-  }
-  section h1 {
-    font-size: 1.25rem;
-    text-align: center;
-  }
-  section time {
-    font-size: 0.7rem;
-  }
-  section.posts p {
-    margin-bottom: 0.5rem;
-  }
-
   .photo {
     text-align: center;
     margin-bottom: 1rem;
@@ -64,7 +56,7 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
   .photo img {
     border: 1px solid black;
     border-radius: 100%;
-    box-shadow: 0 0 16px 2px black;
+    box-shadow: 0 2px 8px 3px rgba(0, 0, 0, 0.2);
     height: 100px;
     width: 100px;
   }

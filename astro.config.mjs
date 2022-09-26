@@ -6,4 +6,10 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://sethlivingston.dev",
   integrations: [sitemap(), mdx()],
+  markdown: {
+    shikiConfig: {
+      // theme: "poimandres",
+      theme: "min-light",
+    },
+  },
 });

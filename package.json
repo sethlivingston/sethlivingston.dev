@@ -10,7 +10,8 @@
     "astro": "astro"
   },
   "prettier": {
-    "printWidth": 94
+    "printWidth": 94,
+    "htmlWhitespaceSensitivity": "strict"
   },
   "devDependencies": {
     "@astrojs/mdx": "^0.10.0",
