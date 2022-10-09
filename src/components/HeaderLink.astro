@@ -12,7 +12,7 @@ const isActive =
   <slot />
 </a>
 <style>
-  a.active {
-    font-weight: bold;
+  a.active::before {
+    content: "> ";
   }
 </style>

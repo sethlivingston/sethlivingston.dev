@@ -1,28 +1,34 @@
 :root {
   --color-primary: #2b4162;
-  --color-background: #f8f8f8;
+  --color-background: #fcfcfc;
   --color-text-loud: black;
   --color-text-normal: #222;
   --color-text-quiet: #777;
   --color-border: #eee;
-  --font-title: "Libre Baskerville", sans-serif;
-  --font-body: "Georgia", sans-serif;
-  --font-meta: "Nanum Gothic", sans-serif;
-  --font-mono: "Nanum Gothic Coding", monospace;
+  --font-title: "Rubik", sans-serif;
+  --font-body: "Wonder Unit Sans", sans-serif;
+  --font-meta: "Wonder Unit Sans", sans-serif;
+  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono",
+    "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono",
+    "Courier New", monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: #f1f1f1;
+  }
 }
 
 html {
   background-color: var(--color-background);
   color: var(--color-text-normal);
   font-family: var(--font-body);
-  font-size: calc(16px * 0.25vw);
+  font-size: calc(15px + 0.25vw);
   height: 100%;
 }
 
 body {
   min-height: 100%;
-  display: grid;
-  grid-template-rows: 1fr auto;
 }
 
 footer {
@@ -99,7 +105,7 @@ h3,
 h4 {
   color: var(--color-text-loud);
   font-family: var(--font-title);
-  letter-spacing: -0.04rem;
+  letter-spacing: -0.01em;
 }
 
 a {
@@ -159,7 +165,7 @@ pre.astro-code {
 }
 pre > code {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 0.75rem;
 }
 /* From https://github.com/shikijs/shiki/issues/3 */
 code {
