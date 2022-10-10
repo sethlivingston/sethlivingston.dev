@@ -23,7 +23,7 @@ html {
   background-color: var(--color-background);
   color: var(--color-text-normal);
   font-family: var(--font-body);
-  font-size: calc(15px + 0.25vw);
+  font-size: calc(13px + 0.25vw);
   height: 100%;
 }
 
