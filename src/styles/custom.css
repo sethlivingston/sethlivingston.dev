@@ -1,3 +1,31 @@
+@font-face {
+  font-family: "Wonder Unit Sans";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../fonts/WonderUnitSans-Regular.woff2");
+}
+
+@font-face {
+  font-family: "Wonder Unit Sans";
+  font-style: italic;
+  font-weight: normal;
+  src: url("../fonts/WonderUnitSans-RegularItalic.woff2");
+}
+
+@font-face {
+  font-family: "Wonder Unit Sans";
+  font-style: normal;
+  font-weight: bold;
+  src: url("../fonts/WonderUnitSans-RegularBold.woff2");
+}
+
+@font-face {
+  font-family: "Wonder Unit Sans";
+  font-style: italic;
+  font-weight: bold;
+  src: url("../fonts/WonderUnitSans-BoldItalic.woff2");
+}
+
 :root {
   --color-primary: #2b4162;
   --color-background: #fcfcfc;
