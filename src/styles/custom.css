@@ -109,10 +109,8 @@ nav ul a:link,
 nav ul a:visited {
   border-bottom: none;
 }
-nav ul.icons a:hover,
-nav ul.icons a:active {
-  color: var(--color-primary);
-  background-color: inherit;
+nav ul.social li {
+  text-transform: none;
 }
 
 hr {
