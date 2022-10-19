@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
   font-display: swap;
   font-family: "Wonder Unit Sans";
   font-style: normal;
@@ -28,7 +28,7 @@
   font-style: italic;
   font-weight: bold;
   src: url("../fonts/WonderUnitSans-BoldItalic.woff2");
-}
+} */
 
 :root {
   --color-primary: #2b4162;
@@ -37,9 +37,12 @@
   --color-text-normal: #222;
   --color-text-quiet: #707070;
   --color-border: #eee;
-  --font-title: "Rubik", sans-serif;
-  --font-body: "Wonder Unit Sans", sans-serif;
-  --font-meta: "Wonder Unit Sans", sans-serif;
+  --font-title: "Merriweather Sans", sans-serif;
+  --font-title-weight: 500;
+  --font-body: "Merriweather", sans-serif;
+  --font-body-weight: 300;
+  --font-meta: "Merriweather Sans", sans-serif;
+  --font-meta-weight: 300;
   --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono",
     "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono",
     "Courier New", monospace;
@@ -56,6 +59,7 @@ html {
   color: var(--color-text-normal);
   font-family: var(--font-body);
   font-size: calc(13px + 0.25vw);
+  font-weight: var(--font-body-weight);
   height: 100%;
 }
 
@@ -76,7 +80,7 @@ header {
   color: var(--color-text-loud);
   font-family: var(--font-title);
   font-size: 1.5rem;
-  font-weight: 500;
+  font-weight: var(--font-title-weight);
   margin-bottom: 0.25rem;
 }
 
@@ -84,6 +88,7 @@ nav {
   display: flex;
   font-family: var(--font-meta);
   font-size: 0.9rem;
+  font-weight: var(--font-meta-weight);
   text-transform: uppercase;
   justify-content: space-between;
   margin-top: 0;
@@ -121,6 +126,7 @@ footer {
   color: var(--color-text-quiet);
   font-family: var(--font-meta);
   font-size: 0.75rem;
+  font-weight: var(--font-meta-weight);
   margin-top: 4rem;
   margin-bottom: 2rem;
   text-align: center;
@@ -135,7 +141,7 @@ h3,
 h4 {
   color: var(--color-text-loud);
   font-family: var(--font-title);
-  font-weight: 500;
+  font-weight: var(--font-title-weight);
   letter-spacing: -0.01em;
 }
 
@@ -179,6 +185,7 @@ article .byline {
   color: var(--color-text-quiet);
   font-family: var(--font-meta);
   font-size: 0.85rem;
+  font-weight: var(--font-meta-weight);
   margin-bottom: 2rem;
 }
 article author {
