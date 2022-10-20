@@ -58,7 +58,6 @@ html {
   background-color: var(--color-background);
   color: var(--color-text-normal);
   font-family: var(--font-body);
-  font-size: 14px;
   font-weight: var(--font-body-weight);
   height: 100%;
 }
