@@ -27,10 +27,10 @@ if (originalPubDate) {
 <Page title={title} description={description} image={heroImage}>
   <article>
     <h1>{title}</h1>
+    <slot />
     <div class="byline">
       <author>Seth Livingston</author>
       <time>{date}</time>
     </div>
-    <slot />
   </article>
 </Page>
