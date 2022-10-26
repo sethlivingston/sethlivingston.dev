@@ -1,4 +1,4 @@
-@font-face {
+/*@font-face {
   font-display: swap;
   font-family: "Wonder Unit Sans";
   font-style: normal;
@@ -28,7 +28,7 @@
   font-style: italic;
   font-weight: bold;
   src: url("../fonts/WonderUnitSans-BoldItalic.woff2");
-}
+}*/
 
 :root {
   --color-primary: #2b4162;
@@ -39,9 +39,9 @@
   --color-border: #eee;
   --font-title: "Spline Sans", sans-serif;
   --font-title-weight: 600;
-  --font-body: "Wonder Unit Sans", sans-serif;
+  --font-body: system-ui, sans-serif;
   --font-body-weight: 400;
-  --font-meta: "Wonder Unit Sans", sans-serif;
+  --font-meta: system-ui, sans-serif;
   --font-meta-weight: 400;
   --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono",
     "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono",
