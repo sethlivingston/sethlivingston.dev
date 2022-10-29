@@ -31,17 +31,23 @@
 }*/
 
 :root {
-  --color-primary: #2b4162;
+  --color-header-text: #fdfdfd;
+  --color-header-bg: #111d5e;
+  --color-accent1: #c70039;
+  --color-accent2: #f37121;
+  --color-accent3: #c0e218;
   --color-background: #fdfdfd;
   --color-text-loud: black;
   --color-text-normal: #222;
   --color-text-quiet: #707070;
-  --color-border: #eee;
-  --font-title: "Spline Sans", sans-serif;
-  --font-title-weight: 600;
+  --color-text-hyperlink: var(--color-accent1);
+  --color-text-hyperlink-hover: white;
+  --color-text-hyperlink-hover-bg: var(--color-accent1);
+  --font-title: Play, sans-serif;
+  --font-title-weight: 700;
   --font-body: system-ui, sans-serif;
   --font-body-weight: 400;
-  --font-meta: system-ui, sans-serif;
+  --font-meta: Play, sans-serif;
   --font-meta-weight: 400;
   --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono",
     "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono",
@@ -50,7 +56,10 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-background: #f1f1f1;
+    --color-background: #343636;
+    --color-text-loud: white;
+    --color-text-normal: #eee;
+    --color-text-quiet: #707070;
   }
 }
 
@@ -71,15 +80,21 @@ footer,
 header,
 main,
 nav {
-  margin: 1rem auto;
+  margin: 0 auto;
   padding: 0 1rem;
   max-width: 48rem;
 }
 
+.headerContainer {
+  background-color: var(--color-header-bg);
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+}
+
 header {
-  color: var(--color-text-loud);
+  color: var(--color-header-text);
   font-family: var(--font-title);
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: var(--font-title-weight);
   margin-bottom: 0.25rem;
 }
@@ -92,6 +107,7 @@ nav {
   text-transform: uppercase;
   justify-content: space-between;
   margin-top: 0;
+  margin-bottom: 1rem;
 }
 nav ul {
   margin: 0;
@@ -112,14 +128,35 @@ nav ul:last-child li {
 nav ul a:link,
 nav ul a:visited {
   border-bottom: none;
+  color: var(--color-header-text);
+}
+nav ul a:hover,
+nav ul a:active {
+  background-color: var(--color-accent2);
 }
 nav ul.social li {
   text-transform: none;
 }
 
-hr {
-  height: 1px;
-  background-color: var(--color-border);
+hr.headerAccent1 {
+  height: 8px;
+  background-color: var(--color-accent1);
+  margin: 0;
+  padding: 0;
+}
+
+hr.headerAccent2 {
+  height: 5px;
+  background-color: var(--color-accent2);
+  margin: 0;
+  padding: 0;
+}
+
+hr.headerAccent3 {
+  height: 3px;
+  background-color: var(--color-accent3);
+  margin: 0;
+  padding: 0;
 }
 
 footer {
@@ -142,7 +179,7 @@ h4 {
   color: var(--color-text-loud);
   font-family: var(--font-title);
   font-weight: var(--font-title-weight);
-  /* letter-spacing: -0.01em; */
+  letter-spacing: -0.01em;
 }
 
 h1 {
@@ -160,18 +197,18 @@ p {
 }
 
 a {
-  color: var(--color-primary);
+  color: var(--color-text-hyperlink);
 }
 a:link,
 a:visited {
-  border-bottom: 1px solid var(--color-primary);
-  color: var(--color-primary);
+  color: var(--color-text-hyperlink);
+  text-decoration: none;
 }
 a:hover,
 a:active {
   border-radius: 2px;
-  background-color: var(--color-primary);
-  color: var(--color-background);
+  background-color: var(--color-text-hyperlink-hover-bg);
+  color: var(--color-text-hyperlink-hover);
   text-decoration: none;
 }
 
@@ -209,7 +246,7 @@ article h1 + article p {
   font-size: 1.5rem;
 }
 article blockquote {
-  color: var(--color-primary);
+  color: var(--color-accent2);
   font-size: 1.5rem;
   margin-top: 2rem;
   margin-bottom: 2rem;

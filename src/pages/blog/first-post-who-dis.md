@@ -8,9 +8,7 @@ originalPubDate: "20 Aug 2022"
 
 The quick brown fox jumps over the lazy dog on a quiet Sunday afternoon whilst Mama enjoys her tea.  The quick brown fox jumps over the lazy dog on a quiet Sunday afternoon whilst Mama enjoys her tea.  The quick brown fox jumps over the lazy dog on a quiet Sunday afternoon whilst Mama enjoys her tea.  The quick brown fox jumps over the lazy dog on a quiet Sunday afternoon whilst Mama enjoys her tea.  The quick brown fox jumps over the lazy dog on a quiet Sunday afternoon whilst Mama enjoys her tea. 
 
-Est praesentium quibusdam porro hic ipsa quaerat quo molestias laborum rem sint excepturi est
-recusandae. Fugiat impedit ullam eum id. Omnis architecto neque qui a deserunt aut fugit
-voluptates dolores.
+Here is a [link to the GitHub website](https://github.com). Here is some **formatted text** that you can *examine closely*.
 
 ## This is a subheading
 
