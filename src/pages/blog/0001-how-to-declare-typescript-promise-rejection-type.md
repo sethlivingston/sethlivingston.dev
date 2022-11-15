@@ -1,37 +1,35 @@
 ---
 layout: "../../layouts/BlogPage.astro"
-title: "The rejection type for a Promise is always `any`"
-description: "The template parameter for Promise<T> is the fulfillment type — not the rejection type. It isn't possible to declare the rejection type."
-pubDate: "8 Nov 2022"
+title: "How to declare the TypeScript Promise rejection type"
+description: "Spoiler alert: It isn't possible."
+pubDate: "15 Nov 2022"
 ---
 
-Consider a function that returns a rejected Promise. It calls `Promise.reject` with a custom object of type `Details`.
+Consider a function that returns a rejected Promise. It calls `Promise.reject` with a number.
 
 ```typescript
-export interface Details {
-  message: string;
-}
-
-export function rejectWithDetails(msg: string): Promise<Details> {
-                                                ^^^^^^^^^^^^^^^^
-  return Promise.reject({ message: msg });
+export function rejectWithNumber(n: number): Promise<number> {
+  return Promise.reject(n);
 }
 ```
 
-This compiles, but the return type for `rejectWithDetails` is incorrect. The return type declaration says, "This function returns a promise that resolves to a `Details` object when fulfilled." That's not what we want. We're trying to convey the rejection type.
+This compiles, but the return type declaration isn't correct.
 
-We can't declare the rejection type because the `Promise` type doesn't have a template parameter for it. In `Promise<T>`, `T` is the **fulfillment** type. The **rejection** type is always `any`. 
+In `Promise<T>`, `T` is the **fulfillment** type. The **rejection** type is always `any`. 
 
-The correct declaration for the function is:
+So what's the correct return type declaration for the function?
 
 ```typescript
-export function rejectWithDetails(msg: string): Promise<any> { ...
-                                                ^^^^^^^^^^^^
+export function rejectWithNumber(n: number): Promise<any> {
+  return Promise.reject(n);                  ^^^^^^^^^^^^
+}
 ```
 
-This is still a little confusing, though. This function does not return a `Promise<any>` because the rejection type is always `any`. It returns a `Promise<any>` because it doesn't know what the Promise's fulfilled type is. Only the calling function knows.
+This is still a little confusing, though.
 
-It is not possible to declare a Promise's rejection type. It is always `any`.
+This function does not return a `Promise<any>` because the rejection type is always `any`. It returns a `Promise<any>` because it doesn't know what the Promise's fulfilled type is. Only the calling function knows.
+
+It's not possible to declare the TypeScript Promise rejection type. It's always `any`.
 
 ### Sources
 
