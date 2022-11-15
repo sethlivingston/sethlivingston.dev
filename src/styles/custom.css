@@ -1,33 +1,10 @@
 /* @font-face {
   font-display: swap;
-  font-family: "Wonder Unit Sans";
+  font-family: "Mona Sans";
   font-style: normal;
-  font-weight: normal;
-  src: url("../fonts/WonderUnitSans-Regular.woff2");
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "Wonder Unit Sans";
-  font-style: italic;
-  font-weight: normal;
-  src: url("../fonts/WonderUnitSans-RegularItalic.woff2");
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "Wonder Unit Sans";
-  font-style: normal;
-  font-weight: bold;
-  src: url("../fonts/WonderUnitSans-RegularBold.woff2");
-}
-
-@font-face {
-  font-display: swap;
-  font-family: "Wonder Unit Sans";
-  font-style: italic;
-  font-weight: bold;
-  src: url("../fonts/WonderUnitSans-BoldItalic.woff2");
+  font-weight: 400 700;
+  src: url("../fonts/Mona-Sans.woff2") format("woff2 supports variations"),
+    url("../fonts/Mona-Sans.woff2") format("woff2-variations");
 } */
 
 :root {
@@ -44,11 +21,11 @@
   --color-text-hyperlink-hover: white;
   --color-text-hyperlink-hover-bg: var(--color-accent1);
   --color-text-blockquote: #111d5e;
-  --font-title: Play, sans-serif;
-  --font-title-weight: 700;
-  --font-body: Inter, sans-serif;
+  --font-title: ivypresto-headline, sans-serif;
+  --font-title-weight: 400;
+  --font-body: freight-sans-pro, sans-serif;
   --font-body-weight: 400;
-  --font-meta: Play, sans-serif;
+  --font-meta: freight-sans-pro, sans-serif;
   --font-meta-weight: 400;
   --font-mono: Menlo, Consolas, "Roboto Mono", "Ubuntu Mono", ui-monospace, monospace;
 }
@@ -70,7 +47,7 @@ html {
   background-color: var(--color-background);
   color: var(--color-text-normal);
   font-family: var(--font-body);
-  font-size: revert;
+  font-size: 18px;
   font-weight: var(--font-body-weight);
   height: 100%;
 }
@@ -182,7 +159,7 @@ h4 {
   color: var(--color-text-loud);
   font-family: var(--font-title);
   font-weight: var(--font-title-weight);
-  letter-spacing: -0.01em;
+  /* letter-spacing: -0.01em; */
 }
 
 h1 {
@@ -200,7 +177,7 @@ p {
 }
 
 strong {
-  font-weight: bold;
+  font-weight: 600;
 }
 
 a {
