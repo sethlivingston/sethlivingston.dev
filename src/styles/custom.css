@@ -9,18 +9,19 @@
 
 :root {
   --color-header-text: #fdfdfd;
-  --color-header-bg: #111d5e;
-  --color-accent1: #c70039;
-  --color-accent2: #f37121;
-  --color-accent3: #c0e218;
+  --color-header-bg: #1e2022;
+  --color-accent1: #52616b;
+  --color-accent2: #c9d6df;
+  --color-accent3: #f0f5f9;
   --color-background: #fefefe;
   --color-text-loud: black;
   --color-text-normal: #222;
   --color-text-quiet: #707070;
-  --color-text-hyperlink: var(--color-accent1);
+  --color-text-hyperlink: #c70039;
   --color-text-hyperlink-hover: white;
-  --color-text-hyperlink-hover-bg: var(--color-accent1);
+  --color-text-hyperlink-hover-bg: var(--color-text-hyperlink);
   --color-text-blockquote: #111d5e;
+  --color-text-code-bg: #f0f5f9;
   --font-title: ivypresto-headline, sans-serif;
   --font-title-weight: 400;
   --font-body: freight-sans-pro, sans-serif;
@@ -29,19 +30,6 @@
   --font-meta-weight: 400;
   --font-mono: Menlo, Consolas, "Roboto Mono", "Ubuntu Mono", ui-monospace, monospace;
 }
-
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: #202124;
-    --color-text-loud: white;
-    --color-text-normal: #f0f0f0;
-    --color-text-quiet: #eee;
-    --color-text-hyperlink: #f37121;
-    --color-text-hyperlink-hover: white;
-    --color-text-hyperlink-hover-bg: #f37121;
-    --color-text-blockquote: #f37121;
-  }
-} */
 
 html {
   background-color: var(--color-background);
@@ -109,10 +97,11 @@ nav ul a:link,
 nav ul a:visited {
   text-decoration: none;
   color: var(--color-header-text);
+  padding: 2px 4px;
 }
 nav ul a:hover,
 nav ul a:active {
-  background-color: var(--color-accent2);
+  background-color: var(--color-text-hyperlink);
 }
 nav ul.social li {
   text-transform: none;
@@ -186,7 +175,7 @@ a {
 a:link,
 a:visited {
   color: var(--color-text-hyperlink);
-  text-decoration: underline;
+  text-decoration: none;
 }
 a:hover,
 a:active {
@@ -245,9 +234,11 @@ article .description {
   font-size: 1.25rem;
   margin-bottom: 1.25rem;
 }
-article code {
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
+article :not(pre) code {
+  background-color: var(--color-text-code-bg);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1rem;
 }
 article blockquote {
   color: var(--color-text-blockquote);
@@ -293,7 +284,7 @@ article .footnotes code {
 
 pre > code {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 0.7rem;
 }
 /* 
  * Line numbering from https://github.com/shikijs/shiki/issues/3
