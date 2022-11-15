@@ -1,4 +1,4 @@
-/*@font-face {
+/* @font-face {
   font-display: swap;
   font-family: "Wonder Unit Sans";
   font-style: normal;
@@ -28,7 +28,7 @@
   font-style: italic;
   font-weight: bold;
   src: url("../fonts/WonderUnitSans-BoldItalic.woff2");
-}*/
+} */
 
 :root {
   --color-header-text: #fdfdfd;
@@ -36,32 +36,35 @@
   --color-accent1: #c70039;
   --color-accent2: #f37121;
   --color-accent3: #c0e218;
-  --color-background: #fdfdfd;
+  --color-background: #fefefe;
   --color-text-loud: black;
   --color-text-normal: #222;
   --color-text-quiet: #707070;
   --color-text-hyperlink: var(--color-accent1);
   --color-text-hyperlink-hover: white;
   --color-text-hyperlink-hover-bg: var(--color-accent1);
+  --color-text-blockquote: #111d5e;
   --font-title: Play, sans-serif;
   --font-title-weight: 700;
-  --font-body: system-ui, sans-serif;
+  --font-body: Inter, sans-serif;
   --font-body-weight: 400;
   --font-meta: Play, sans-serif;
   --font-meta-weight: 400;
-  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono",
-    "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono",
-    "Courier New", monospace;
+  --font-mono: Menlo, Consolas, "Roboto Mono", "Ubuntu Mono", ui-monospace, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
-    --color-background: #343636;
+    --color-background: #202124;
     --color-text-loud: white;
-    --color-text-normal: #eee;
-    --color-text-quiet: #707070;
+    --color-text-normal: #f0f0f0;
+    --color-text-quiet: #eee;
+    --color-text-hyperlink: #f37121;
+    --color-text-hyperlink-hover: white;
+    --color-text-hyperlink-hover-bg: #f37121;
+    --color-text-blockquote: #f37121;
   }
-}
+} */
 
 html {
   background-color: var(--color-background);
@@ -127,7 +130,7 @@ nav ul:last-child li {
 }
 nav ul a:link,
 nav ul a:visited {
-  border-bottom: none;
+  text-decoration: none;
   color: var(--color-header-text);
 }
 nav ul a:hover,
@@ -196,13 +199,17 @@ p {
   letter-spacing: normal;
 }
 
+strong {
+  font-weight: bold;
+}
+
 a {
   color: var(--color-text-hyperlink);
 }
 a:link,
 a:visited {
   color: var(--color-text-hyperlink);
-  text-decoration: none;
+  text-decoration: underline;
 }
 a:hover,
 a:active {
@@ -225,6 +232,7 @@ section h1 {
   text-align: center;
 }
 section.posts p {
+  font-family: var(--font-title);
   margin-bottom: 0.5rem;
 }
 section.posts time {
@@ -245,21 +253,76 @@ article author {
 article h1 + article p {
   font-size: 1.5rem;
 }
+article h1,
+article h2,
+article h3,
+article p,
+article ul,
+article ol,
+article dl,
+article table,
+article pre {
+  margin-bottom: 1.75rem;
+}
+article .description {
+  font-size: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+article code {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
 article blockquote {
-  color: var(--color-accent2);
+  color: var(--color-text-blockquote);
   font-size: 1.5rem;
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
-
-pre.astro-code {
-  background-color: var(--color-background) !important;
+article ol,
+article ul,
+article dl {
+  margin-left: 1.5rem;
 }
+article ul li,
+article ol li {
+  margin-bottom: 0.75rem;
+}
+article ul li p,
+article ol li p {
+  margin: 0;
+}
+article dl dt {
+  font-weight: bold;
+  font-style: normal;
+}
+article table {
+  font-size: 0.9rem;
+}
+article .footnotes h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+article .footnotes ol {
+  font-size: 0.9rem;
+  margin-left: 0;
+}
+article .footnotes p,
+article .footnotes pre {
+  margin-bottom: 1rem;
+}
+article .footnotes code {
+  font-size: 0.8rem;
+}
+
 pre > code {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.85rem;
 }
-/* From https://github.com/shikijs/shiki/issues/3 */
+/* 
+ * Line numbering from https://github.com/shikijs/shiki/issues/3
+ * Unfortunately does not work on Safari, because the line numbers 
+ * become part of what's selected.
+ *
 code {
   counter-reset: step;
   counter-increment: step 0;
@@ -273,3 +336,4 @@ code .line::before {
   text-align: right;
   color: rgba(115, 138, 148, 0.4);
 }
+*/

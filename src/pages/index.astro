@@ -3,10 +3,12 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../config";
 import Page from "../layouts/Page.astro";
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
-const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
-  (a, b) =>
-    new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
-);
+const posts = (await Astro.glob("./blog/*.{md,mdx}"))
+  .filter((x) => !x.frontmatter.draft)
+  .sort(
+    (a, b) =>
+      new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
+  );
 ---
 
 <Page title={SITE_TITLE} description={SITE_DESCRIPTION}>

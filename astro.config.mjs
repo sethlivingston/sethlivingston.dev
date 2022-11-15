@@ -8,8 +8,8 @@ export default defineConfig({
   integrations: [sitemap(), mdx()],
   markdown: {
     shikiConfig: {
-      // theme: "poimandres",
-      theme: "min-light",
+      theme: "poimandres",
     },
+    extendDefaultPlugins: true,
   },
 });

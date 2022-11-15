@@ -2,9 +2,10 @@
   "name": "@sethlivingston/sethlivingston.dev",
   "version": "0.0.1",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
+    "dev": "astro dev --port=3030",
+    "start": "astro dev --port=3030",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
