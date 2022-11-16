@@ -31,6 +31,8 @@ This function does not return a `Promise<any>` because the rejection type is alw
 
 It's not possible to declare the TypeScript Promise rejection type. It's always `any`.
 
+[Post a comment, correction, or question](https://github.com/sethlivingston/sethlivingston.dev/discussions/2). Thanks for your feedback.
+
 ### Sources
 
 * [Different types for rejected/fulfilled Promise · Issue #7588 · microsoft/TypeScript](https://github.com/Microsoft/TypeScript/issues/7588)
