@@ -5,7 +5,7 @@ description: "Spoiler alert: It isn't possible."
 pubDate: "15 Nov 2022"
 ---
 
-Consider a function that returns a rejected Promise. It calls `Promise.reject` with a number.
+Consider a function that returns a rejected Promise. It calls `Promise.reject()` with a number.
 
 ```typescript
 export function rejectWithNumber(n: number): Promise<number> {
@@ -25,7 +25,7 @@ export function rejectWithNumber(n: number): Promise<any> {
 }
 ```
 
-This is still a little confusing, though.
+This is a little confusing, though.
 
 This function does not return a `Promise<any>` because the rejection type is always `any`. It returns a `Promise<any>` because it doesn't know what the Promise's fulfilled type is. Only the calling function knows.
 
