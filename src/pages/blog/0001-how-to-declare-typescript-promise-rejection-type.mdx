@@ -7,7 +7,7 @@ pubDate: "15 Nov 2022"
 
 import Comments from "../../components/Comments.astro";
 
-Consider a function that returns a rejected Promise. It calls `Promise.reject()` with a number.
+Consider a utility function that returns a rejected Promise.
 
 ```typescript
 export function rejectWithNumber(n: number): Promise<number> {
@@ -17,7 +17,7 @@ export function rejectWithNumber(n: number): Promise<number> {
 
 This compiles, but the return type declaration isn't correct.
 
-In `Promise<T>`, `T` is the **fulfillment** type. The **rejection** type is always `any`. 
+> In `Promise<T>`, `T` is the **fulfillment** type. The **rejection** type is always `any`.
 
 So what's the correct return type declaration for the function?
 
@@ -29,7 +29,7 @@ export function rejectWithNumber(n: number): Promise<any> {
 
 This is a little confusing, though.
 
-This function does not return a `Promise<any>` because the rejection type is always `any`. It returns a `Promise<any>` because it doesn't know what the Promise's fulfilled type is. Only the calling function knows.
+This function doesn't return a `Promise<any>` because the rejection type is always `any`. It returns a `Promise<any>` because it doesn't know what the Promise's fulfilled type is. Only the calling function knows.
 
 It's not possible to declare the TypeScript Promise rejection type. It's always `any`.
 
@@ -37,8 +37,5 @@ It's not possible to declare the TypeScript Promise rejection type. It's always 
 
 ### Sources
 
-* [Different types for rejected/fulfilled Promise · Issue #7588 · microsoft/TypeScript](https://github.com/Microsoft/TypeScript/issues/7588)
-* [javascript - Typescript Promise rejection type - Stack Overflow](https://stackoverflow.com/questions/50071115/typescript-promise-rejection-type/50071254#50071254)
-
-
-
+- [Different types for rejected/fulfilled Promise · Issue #7588 · microsoft/TypeScript](https://github.com/Microsoft/TypeScript/issues/7588)
+- [javascript - Typescript Promise rejection type - Stack Overflow](https://stackoverflow.com/questions/50071115/typescript-promise-rejection-type/50071254#50071254)

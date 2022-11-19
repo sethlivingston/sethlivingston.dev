@@ -106,7 +106,7 @@ The table below shows the `TypeError.message` value for various network and pre-
 
 There is no reliable way to differentiate between pre-processing errors and network errors.
 
-Because pre-processing errors are rare and largely preventable, it's acceptable to treat them as network errors. In this way network errors become "any error that prevents fetch from making a connection." What's important is that you log the exception message so developers can spot pre-processing errors sooner than later. If you run thorough tests on your application or library, then you can assume exceptions in production are true network errors.
+Because pre-processing errors are rare and largely preventable, it's acceptable to treat them as network errors. In this way network errors become "any error that prevents fetch from making a connection." What's important is that you log the exception message so developers can spot pre-processing errors sooner than later.
 
 **How to test**: Use the facilities in your testing tools to mock or intercept the `fetch()` function and throw an exception.
 
@@ -120,19 +120,21 @@ Handling network errors effectively is the sign of a robust application or libra
 
 ### HTTP errors
 
+**Cause**: HTTP errors happen when `fetch()` makes a successful connection, but the remote server returns an error. The "remote server" can be anything that responds to HTTP requests, e.g., a load balancer, a reverse proxy, or a web application.
+
+**How often**:
+
+**How to detect**:
+
+**How to test**:
+
+
 ### Post-processing errors
 
-## Should you wrap fetch yourself or use an existing Fetch API wrapper?
+**Cause**:
 
+**How often**:
 
+**How to detect**:
 
-[^1]: You can try this yourself. Start with this function. Make modifications as needed to simulate different error conditions.
-      ```javascript
-      (async function() {
-        try { 
-          await fetch("https://api.chucknorrisnopenopenope.io/jokes/random"); 
-        } catch (err) { 
-          console.log("message:", err.message); 
-        } 
-      })()
-      ```
+**How to test**:
