@@ -107,11 +107,12 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		TableName:    &tsTableName,
 		Records: []*timestreamwrite.Record{
 			{
-				Dimensions:   dimensions,
-				MeasureName:  aws.String("visit"),
-				MeasureValue: aws.String("1"),
-				Time:         aws.String(strconv.FormatInt(time.Now().Unix(), 10)),
-				TimeUnit:     aws.String("SECONDS"),
+				Dimensions:       dimensions,
+				MeasureName:      aws.String("visit"),
+				MeasureValue:     aws.String("1"),
+				MeasureValueType: aws.String("BIGINT"),
+				Time:             aws.String(strconv.FormatInt(time.Now().Unix(), 10)),
+				TimeUnit:         aws.String("SECONDS"),
 			},
 		},
 	}
