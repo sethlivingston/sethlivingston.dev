@@ -4,7 +4,6 @@ import (
 	"log"
 	"net"
 	"net/http"
-	"net/url"
 	"os"
 	"strconv"
 	"time"
@@ -36,19 +35,10 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	//
 	// Only the URL path is guaranteed to be available
 
-	pathValue := r.URL.Path
-	referrerValue := r.Referer()
-
-	var (
-		sourceValue string = ""
-		mediumValue string = ""
-	)
-	query, err := url.ParseQuery(r.URL.RawQuery)
-	if err != nil {
-		sourceValue = query.Get("utm_source")
-		mediumValue = query.Get("utm_medium")
-	}
-
+	pathValue := r.PostForm.Get("path")
+	referrerValue := r.PostForm.Get("referrer")
+	sourceValue := r.PostForm.Get("source")
+	mediumValue := r.PostForm.Get("medium")
 	visitIDValue := uuid.NewString()
 
 	// Collect environment variables
@@ -97,8 +87,10 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 	dimensions := []*timestreamwrite.Dimension{
 		{Name: aws.String("path"), Value: &pathValue},
-		{Name: aws.String("referrer"), Value: &referrerValue},
 		{Name: aws.String("visit_id"), Value: &visitIDValue},
+	}
+	if referrerValue != "" {
+		dimensions = append(dimensions, &timestreamwrite.Dimension{Name: aws.String("referrer"), Value: &referrerValue})
 	}
 	if sourceValue != "" {
 		dimensions = append(dimensions, &timestreamwrite.Dimension{Name: aws.String("source"), Value: &sourceValue})
@@ -133,5 +125,5 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	log.Printf("successfully logged visit")
+	w.WriteHeader(http.StatusNoContent)
 }

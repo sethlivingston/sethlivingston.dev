@@ -8,7 +8,7 @@ export default defineConfig({
   integrations: [sitemap(), mdx()],
   markdown: {
     shikiConfig: {
-      theme: "poimandres",
+      theme: "dracula",
     },
     extendDefaultPlugins: true,
   },

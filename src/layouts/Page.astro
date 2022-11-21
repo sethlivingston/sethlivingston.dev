@@ -39,5 +39,27 @@ const { title, description, image } = Astro.props as Props;
     </div>
 
     <Footer />
+
+    <script>
+      // Record the path, referrer, utm_source, utm_medium. Nothing else.
+      const path = window.location.pathname;
+      const referrer = document.referrer || "";
+
+      const params = new URLSearchParams(window.location.search);
+      const source = params.get("utm_source") || "";
+      const medium = params.get("utm_medium") || "";
+
+      const body = new URLSearchParams({ path, referrer, source, medium }).toString();
+
+      window.setTimeout(() => {
+        fetch("/api/visit", {
+          method: "POST",
+          headers: {
+            "content-type": "application/x-www-form-urlencoded",
+          },
+          body,
+        });
+      }, 4000);
+    </script>
   </body>
 </html>
