@@ -17,7 +17,7 @@ import (
 	"golang.org/x/net/http2"
 )
 
-func Visit(w http.ResponseWriter, r *http.Request) {
+func Handler(w http.ResponseWriter, r *http.Request) {
 	if r == nil {
 		return
 	}
