@@ -25,7 +25,9 @@
   --font-body-weight: 400;
   --font-meta: adelle-sans, sans-serif;
   --font-meta-weight: 300;
-  --font-mono: ui-monospace, monospace;
+  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono",
+    "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono",
+    "Courier New", monospace;
 }
 
 @media (prefers-color-scheme: dark) {
