@@ -34,7 +34,10 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	pathValue := r.URL.Path
 	referrerValue := r.Referer()
 
-	var sourceValue, mediumValue string
+	var (
+		sourceValue string = ""
+		mediumValue string = ""
+	)
 	query, err := url.ParseQuery(r.URL.RawQuery)
 	if err != nil {
 		sourceValue = query.Get("utm_source")
@@ -87,20 +90,26 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 	writeSvc := timestreamwrite.New(sess)
 
+	dimensions := []*timestreamwrite.Dimension{
+		{Name: aws.String("path"), Value: &pathValue},
+		{Name: aws.String("referrer"), Value: &referrerValue},
+		{Name: aws.String("visit_id"), Value: &visitIDValue},
+	}
+	if sourceValue != "" {
+		dimensions = append(dimensions, &timestreamwrite.Dimension{Name: aws.String("source"), Value: &sourceValue})
+	}
+	if mediumValue != "" {
+		dimensions = append(dimensions, &timestreamwrite.Dimension{Name: aws.String("medium"), Value: &mediumValue})
+	}
+
 	writeRecordsInput := timestreamwrite.WriteRecordsInput{
 		DatabaseName: &tsDatabaseName,
 		TableName:    &tsTableName,
 		Records: []*timestreamwrite.Record{
 			{
-				Dimensions: []*timestreamwrite.Dimension{
-					{Name: aws.String("path"), Value: &pathValue},
-					{Name: aws.String("referrer"), Value: &referrerValue},
-					{Name: aws.String("source"), Value: &sourceValue},
-					{Name: aws.String("medium"), Value: &mediumValue},
-					{Name: aws.String("visit_id"), Value: &visitIDValue},
-				},
-				Time:     aws.String(strconv.FormatInt(time.Now().Unix(), 10)),
-				TimeUnit: aws.String("SECONDS"),
+				Dimensions: dimensions,
+				Time:       aws.String(strconv.FormatInt(time.Now().Unix(), 10)),
+				TimeUnit:   aws.String("SECONDS"),
 			},
 		},
 	}
