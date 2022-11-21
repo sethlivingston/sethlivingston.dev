@@ -180,6 +180,9 @@ a:active {
   text-align: center;
 }
 
+section {
+  margin-bottom: 3rem;
+}
 section.narrow {
   margin-left: 2rem;
   margin-right: 2rem;
