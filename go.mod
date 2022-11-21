@@ -1,6 +1,6 @@
 module sethlivingston.dev/serverless
 
-go 1.19
+go 1.16
 
 require golang.org/x/net v0.2.0
 
