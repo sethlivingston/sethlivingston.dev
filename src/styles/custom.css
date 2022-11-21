@@ -25,7 +25,7 @@
   --font-body-weight: 400;
   --font-meta: adelle-sans, sans-serif;
   --font-meta-weight: 300;
-  --font-mono: adelle-mono, ui-monospace, monospace;
+  --font-mono: ui-monospace, monospace;
 }
 
 @media (prefers-color-scheme: dark) {
