@@ -22,6 +22,11 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	if r.Method != "POST" {
+		w.WriteHeader(http.StatusMethodNotAllowed)
+		return
+	}
+
 	// Collect anonymous data from the request:
 	//
 	//  - URL path (/blog/article-name, /apps, ...)
