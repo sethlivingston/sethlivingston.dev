@@ -35,6 +35,13 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	//
 	// Only the URL path is guaranteed to be available
 
+	err := r.ParseForm()
+	if err != nil {
+		log.Printf("error parsing form data: %s", err.Error())
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
 	pathValue := r.PostForm.Get("path")
 	referrerValue := r.PostForm.Get("referrer")
 	sourceValue := r.PostForm.Get("source")
@@ -78,6 +85,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	})
 	if err != nil {
 		log.Printf("error creating AWS session: %s", err.Error())
+		w.WriteHeader(500)
 		return
 	}
 
@@ -117,11 +125,13 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	result, err := writeSvc.WriteRecords(&writeRecordsInput)
 	if err != nil {
 		log.Printf("error writing AWS timestream record: %s", err.Error())
+		w.WriteHeader(500)
 		return
 	}
 
 	if result.RecordsIngested == nil || *result.RecordsIngested.Total != 1 {
 		log.Printf("no AWS timestream records written")
+		w.WriteHeader(500)
 		return
 	}
 
