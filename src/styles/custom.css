@@ -291,6 +291,10 @@ article .footnotes pre {
 article .footnotes code {
   font-size: 0.8rem;
 }
+article .minutia {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
 
 pre {
   border: 1px solid #32353e;
